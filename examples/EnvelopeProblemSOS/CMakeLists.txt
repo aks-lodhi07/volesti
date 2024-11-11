@@ -52,7 +52,8 @@ if (USE_OpenMP)
     find_package(OpenMP REQUIRED)
 endif (USE_OpenMP)
 
-find_package(Python2 COMPONENTS Development NumPy)
+find_package(Python3 COMPONENTS Development NumPy REQUIRED)
+
 add_executable(EnvelopeProblem ${TARGETS})
 
 if (NOT BOOST_DIR)
@@ -82,5 +83,6 @@ else ()
     if (USE_OpenMP)
         target_link_directories(EnvelopeProblem PRIVATE ${OPENMP_LIBRARIES})
     endif ()
-    target_link_libraries(EnvelopeProblem Python2::Python Python2::NumPy)
+    target_link_libraries(EnvelopeProblem Python3::Python Python3::NumPy)
+
 endif ()
